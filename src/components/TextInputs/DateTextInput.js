@@ -4,7 +4,7 @@ import DateTimePicker from '@react-native-community/datetimepicker'
 import { colorTheme } from '../../constant'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
-export default function DateTextInput({ inputTitle, isRequire, style, isiconRequire }) {
+export default function DateTextInput({ inputTitle, isRequire, style, isiconRequire,textInputParams,handleChange }) {
     const [date, setdate] = useState(new Date())
     const [show, setshow] = useState(false)
     const [text, setText] = useState('')
@@ -17,6 +17,7 @@ export default function DateTextInput({ inputTitle, isRequire, style, isiconRequ
         let tempDate = new Date(currentDate);
         let fDate = tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear(); // Adjust month by adding 1
         setText(fDate);
+        handleChange(textInputParams, fDate);
     }
 
     return (
@@ -32,7 +33,7 @@ export default function DateTextInput({ inputTitle, isRequire, style, isiconRequ
                     }
                 </View>
                 <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderColor: colorTheme.borderColor, borderBottomWidth: 1 }} onPress={() => setshow(true)}>
-                    <Text style={{ marginLeft: 5,color:'black',fontSize:17,fontWeight:'500' }}>{text === '' ? 'Enter Date' : text}</Text>
+                    <Text style={{ marginLeft: 5,color:'gray',fontSize:15,fontWeight:'400' }}>{text === '' ? 'Enter Date' : text}</Text>
                     <MaterialCommunityIcons name={'calendar-month'} color={"black"} size={25} style={{ padding: 5 }} onPress={() => setshow(true)} />
                 </TouchableOpacity>
             </View>

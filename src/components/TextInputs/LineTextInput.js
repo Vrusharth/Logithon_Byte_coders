@@ -26,7 +26,7 @@ export default function LineTextInput({
       {title && (
         <View style={{flexDirection: 'row'}}>
           <Text
-            style={{color: colorTheme.blue, fontSize: 15, fontWeight: '400'}}>
+            style={{color: colorTheme.blue, fontSize: 15, fontWeight: '400',}}>
             {title}
           </Text>
           {isRequire && <Text style={{color: 'red', marginLeft: 3}}>*</Text>}
@@ -47,7 +47,7 @@ export default function LineTextInput({
           alignItems: 'center',
         }}>
         <TextInput
-          style={{paddingVertical: 5, width: atEndIconName ?'90%':'100%'}}
+          style={{paddingVertical:1, width: atEndIconName ?'90%':'100%'}}
           onChangeText={text => {
             handleChange(textInputParams, text);
           }}

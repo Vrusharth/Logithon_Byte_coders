@@ -11,6 +11,7 @@ import Login from '../screens/Auth/Login'
 import Signup from '../screens/Auth/Signup'
 import AddOrganisation from '../screens/Auth/AddOrganisation'
 import SetupOrganization from '../screens/Auth/SetupOrganization'
+import TaxPreference from '../screens/Auth/TaxPreference'
 
 const Stack = createNativeStackNavigator()
 
@@ -23,6 +24,7 @@ export default StackNavigation = () => {
             <Stack.Screen name='Choice' component={Choice} options={{ headerShown: false }} />
             <Stack.Screen name='AddOrganisation' component={AddOrganisation} options={{ headerShown: false }} />
             <Stack.Screen name='SetupOrganization' component={SetupOrganization} options={{ headerShown: false }} />
+            <Stack.Screen name='TaxPreference' component={TaxPreference} options={{ headerShown: false }} />
             <Stack.Screen name='SideDrawer' component={SideDrawer} options={{ headerShown: false }} />
             <Stack.Screen name='CompleteProfile' component={CompleteProfile} options={{ headerShown: false }} />
             <Stack.Screen name='NewCustomer' component={NewCustomer} options={{ headerShown: false }} />

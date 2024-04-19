@@ -99,3 +99,27 @@ export const CountryData = [
   {label: 'Chile', value: 'Chile'},
   {label: 'Finland', value: 'Finland'},
 ];
+
+export const FiscalYearData = [
+  {label: 'January-December', value: 'January-December'},
+  {label: 'February-January', value: 'February-January'},
+  {label: 'March-February', value: 'March-February'},
+  {label: 'April-March', value: 'April-March'},
+  {label: 'May-April', value: 'May-April'},
+  {label: 'June-May', value: 'June-May'},
+  {label: 'July-June', value: 'July-June'},
+  {label: 'August-July', value: 'August-July'},
+  {label: 'September-August', value: 'September-August'},
+  {label: 'October-September', value: 'October-September'},
+  {label: 'November-October', value: 'November-October'},
+  {label: 'December-November', value: 'December-November'},
+];
+
+export const CustomDutyData=[
+  {label: 'Loadging', value: 'Loadging'},
+  {label: 'Merchandise', value: 'Merchandise'},
+  {label: 'Office Supplies', value: 'Office Supplies'},
+  {label: 'Bad Debt', value: 'Bad Debt'},
+  {label: 'Travel Expenses', value: 'Travel Expenses'},
+  {label: 'Rent Expenses', value: 'Rent Expenses'},
+]
