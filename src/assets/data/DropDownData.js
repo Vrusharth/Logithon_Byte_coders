@@ -156,3 +156,29 @@ export const CustomDutyData=[
   {label: 'Travel Expenses', value: 'Travel Expenses'},
   {label: 'Rent Expenses', value: 'Rent Expenses'},
 ]
+
+export const UnitData=[
+  {label: 'box', value: 'box'},
+  {label: 'cm', value: 'cm'},
+  {label: 'dz', value: 'dz'},
+  {label: 'ft', value: 'ft'},
+  {label: 'g', value: 'g'},
+  {label: 'in', value: 'in'},
+  {label: 'kg', value: 'kg'},
+  {label: 'km', value: 'km'},
+  {label: 'lb', value: 'lb'},
+  {label: 'mg', value: 'mg'},
+  {label: 'ml', value: 'ml'},
+  {label: 'm', value: 'm'},
+  {label: 'pcs', value: 'pcs'},
+]
+
+export const AccountData=[
+  {label: 'Sales', value: 'Sales'},
+  {label: 'General Income', value: 'General Income'},
+  {label: 'Intrest Income', value: 'Intrest Income'},
+  {label: 'Late Fee Income', value: 'Late Fee Income'},
+  {label: 'Discount', value: 'Discount'},
+  {label: 'Other Charges', value: 'Other Charges'},
+  {label: 'Shipping Charges', value: 'Shipping Charges'},
+]
