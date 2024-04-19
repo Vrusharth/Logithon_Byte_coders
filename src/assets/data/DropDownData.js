@@ -55,6 +55,39 @@ export const PortalLanuuag = [
   {label: 'Türkçe', value: 'Türkçe'}, // Turkish
 ];
 
+export const stateData = [
+  { "label": "Kerala", "value": "Kerala" },
+  { "label": "Tamil Nadu", "value": "Tamil Nadu" },
+  { "label": "Karnataka", "value": "Karnataka" },
+  { "label": "Andhra Pradesh", "value": "Andhra Pradesh" },
+  { "label": "Telangana", "value": "Telangana" },
+  { "label": "Maharashtra", "value": "Maharashtra" },
+  { "label": "Gujarat", "value": "Gujarat" },
+  { "label": "Rajasthan", "value": "Rajasthan" },
+  { "label": "Punjab", "value": "Punjab" },
+  { "label": "Haryana", "value": "Haryana" },
+  { "label": "Uttar Pradesh", "value": "Uttar Pradesh" },
+  { "label": "Bihar", "value": "Bihar" },
+  { "label": "West Bengal", "value": "West Bengal" },
+  { "label": "Odisha", "value": "Odisha" },
+  { "label": "Jharkhand", "value": "Jharkhand" },
+  { "label": "Chhattisgarh", "value": "Chhattisgarh" },
+  { "label": "Madhya Pradesh", "value": "Madhya Pradesh" },
+  { "label": "Assam", "value": "Assam" },
+  { "label": "Meghalaya", "value": "Meghalaya" },
+  { "label": "Nagaland", "value": "Nagaland" },
+  { "label": "Manipur", "value": "Manipur" },
+  { "label": "Mizoram", "value": "Mizoram" },
+  { "label": "Tripura", "value": "Tripura" },
+  { "label": "Sikkim", "value": "Sikkim" },
+  { "label": "Arunachal Pradesh", "value": "Arunachal Pradesh" },
+  { "label": "Himachal Pradesh", "value": "Himachal Pradesh" },
+  { "label": "Uttarakhand", "value": "Uttarakhand" },
+  { "label": "Jammu and Kashmir", "value": "Jammu and Kashmir" },
+  { "label": "Ladakh", "value": "Ladakh" },
+  { "label": "Goa", "value": "Goa" }
+];
+
 export const CountryData = [
   {label: 'India', value: 'India'},
   {label: 'United States', value: 'United States'},

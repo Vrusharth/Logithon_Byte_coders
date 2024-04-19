@@ -4,3 +4,7 @@ export const Composition_scheme_data=[
     '5% (For Restaurent Sector',
     '6% (For Suppliers of Sevice or Mixed Suppliers',
 ]
+
+export const ItemType=[
+    'Goods',"Service"
+]

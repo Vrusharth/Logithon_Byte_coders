@@ -19,6 +19,7 @@ import OptionInput from '../../components/TextInputs/OptionInput';
 import {Composition_scheme_data} from '../../assets/data/OptionInputData';
 import {CurrencyData, CustomDutyData} from '../../assets/data/DropDownData';
 import DropDownLineText from '../../components/TextInputs/DropDownLineText';
+import {userAuth} from '../../services/userauth';
 
 export default TaxPreference = () => {
   const [isTaxEnabled, setIsTaxEnabled] = useState(false);
@@ -27,15 +28,14 @@ export default TaxPreference = () => {
   const [isImportexport, setIsImportexport] = useState(false);
   const [disgitalservice, setdisgitalservice] = useState(false);
   const [gstInfo, setGstInfo] = useState({
-    gstin_number: '',
-    gst_reg_data: '',
-    comp_scheme_per: '',
-    custom_duty: '',
+    gstin: '',
+    gstdate: '',
+    compostion_scheme_percent: '',
+    customduty_tracking: '',
     digital_service: false,
-    composition_scheme: false,
-    reverse_charge: false,
-    imp_exp: false,
-    isGst: false,
+    compostion_scheme: false,
+    import_export: false,
+    isbuisness_register_gst: false,
   });
   const handleChange = (name, value) => {
     setGstInfo(prevState => ({
@@ -43,6 +43,15 @@ export default TaxPreference = () => {
       [name]: value,
     }));
   };
+  function handleClick(params) {
+    try {
+      userAuth.GstDetails(gstInfo).then(() => {
+        navigation.navigate('SideDrawer');
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
@@ -52,13 +61,14 @@ export default TaxPreference = () => {
           header={'Gst Settings'}
           leftIconName={'keyboard-backspace'}
           rightIconName2={'check'}
+          rightIconName2Fuction={handleClick}
         />
       </View>
       {/* Main Content */}
       <ScrollView>
         <View style={styles.content}>
           <Text
-          onPress={()=>console.log(gstInfo)}
+            onPress={() => console.log(gstInfo)}
             style={[
               styles.bigText,
               {fontSize: 16, color: colorTheme.primaryColor, fontWeight: '500'},
@@ -83,9 +93,9 @@ export default TaxPreference = () => {
               trackColor={{false: '#767577', true: '#81b0ff'}}
               thumbColor={isTaxEnabled ? colorTheme.blue : '#f4f3f4'}
               ios_backgroundColor="#3e3e3e"
-              onValueChange={() =>{
-                setIsTaxEnabled(previousState => !previousState)
-                handleChange('isGst',true)
+              onValueChange={() => {
+                setIsTaxEnabled(previousState => !previousState);
+                handleChange('isbuisness_register_gst', true);
               }}
               value={isTaxEnabled}
             />
@@ -95,9 +105,9 @@ export default TaxPreference = () => {
               <LineTextInput
                 title={'GST identification Number (GSTIN)'}
                 atEndIconName={'factory'}
-                value={gstInfo.gstin_number}
+                value={gstInfo.gstin}
                 handleChange={handleChange}
-                textInputParams={'gstin_number'}
+                textInputParams={'gstin'}
                 isRequire
                 isiconRequire
                 style={{marginTop: 20}}
@@ -105,7 +115,7 @@ export default TaxPreference = () => {
               <DateTextInput
                 inputTitle={'GST Registerd On'}
                 isRequire
-                textInputParams={'gst_reg_data'}
+                textInputParams={'gstdate'}
                 handleChange={handleChange}
                 style={{marginTop: 20}}
               />
@@ -144,9 +154,9 @@ export default TaxPreference = () => {
                   trackColor={{false: '#767577', true: '#81b0ff'}}
                   thumbColor={iscompositionScheme ? colorTheme.blue : '#f4f3f4'}
                   ios_backgroundColor="#3e3e3e"
-                  onValueChange={() =>{
-                    setiscompositionScheme(previousState => !previousState)
-                    handleChange('composition_scheme',true)
+                  onValueChange={() => {
+                    setiscompositionScheme(previousState => !previousState);
+                    handleChange('compostion_scheme', true);
                   }}
                   value={iscompositionScheme}
                 />
@@ -156,48 +166,10 @@ export default TaxPreference = () => {
                   title={'Composition Scheme Percentage (%)'}
                   data={Composition_scheme_data}
                   isRequire
-                  textInputParams={'comp_scheme_per'}
+                  textInputParams={'compostion_scheme_percent'}
                   handleChange={handleChange}
                 />
               )}
-            </View>
-            <View style={styles.content}>
-              <Text
-                style={[
-                  styles.bigText,
-                  {
-                    fontSize: 16,
-                    color: colorTheme.primaryColor,
-                    fontWeight: '500',
-                  },
-                ]}>
-                Reverse Charge
-              </Text>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  marginTop: 20,
-                }}>
-                <Text
-                  style={[
-                    styles.bigText,
-                    {fontSize: 16, fontWeight: '400', width: '70%'},
-                  ]}>
-                  Do you want to enable Reverse Charge in Sales transaction?
-                </Text>
-                <Switch
-                  trackColor={{false: '#767577', true: '#81b0ff'}}
-                  thumbColor={reverseCharge ? colorTheme.blue : '#f4f3f4'}
-                  ios_backgroundColor="#3e3e3e"
-                  onValueChange={() =>{
-                    setReverseCharge(previousState => !previousState)
-                    handleChange('reverse_charge',true)
-                  }}
-                  value={reverseCharge}
-                />
-              </View>
             </View>
             <View style={styles.content}>
               <Text
@@ -229,9 +201,9 @@ export default TaxPreference = () => {
                   trackColor={{false: '#767577', true: '#81b0ff'}}
                   thumbColor={isImportexport ? colorTheme.blue : '#f4f3f4'}
                   ios_backgroundColor="#3e3e3e"
-                  onValueChange={() =>{
-                    setIsImportexport(previousState => !previousState)
-                    handleChange('imp_exp',true)
+                  onValueChange={() => {
+                    setIsImportexport(previousState => !previousState);
+                    handleChange('import_export', true);
                   }}
                   value={isImportexport}
                 />
@@ -242,7 +214,7 @@ export default TaxPreference = () => {
                     inputTitle={'Custom Duty Tracking Account'}
                     data={CustomDutyData}
                     style={{marginTop: 20}}
-                    textInputParams={'custom_duty'}
+                    textInputParams={'customduty_tracking'}
                     handleChange={handleChange}
                     isRequire
                   />
@@ -267,7 +239,7 @@ export default TaxPreference = () => {
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   marginTop: 20,
-                  marginBottom:10
+                  marginBottom: 10,
                 }}>
                 <Text
                   style={[
@@ -281,16 +253,24 @@ export default TaxPreference = () => {
                   trackColor={{false: '#767577', true: '#81b0ff'}}
                   thumbColor={disgitalservice ? colorTheme.blue : '#f4f3f4'}
                   ios_backgroundColor="#3e3e3e"
-                  onValueChange={() =>{
-                    setdisgitalservice(previousState => !previousState)
-                    handleChange('digital_service',true)
+                  onValueChange={() => {
+                    setdisgitalservice(previousState => !previousState);
+                    handleChange('digital_service', true);
                   }}
                   value={disgitalservice}
-                  
                 />
               </View>
-              {!disgitalservice ?<Text>Enabling this option will let you record and track export of
-                digital service to individuals</Text>:<Text>If you disable this option any digital service created by you will be </Text>}
+              {!disgitalservice ? (
+                <Text>
+                  Enabling this option will let you record and track export of
+                  digital service to individuals
+                </Text>
+              ) : (
+                <Text>
+                  If you disable this option any digital service created by you
+                  will be{' '}
+                </Text>
+              )}
             </View>
           </>
         )}

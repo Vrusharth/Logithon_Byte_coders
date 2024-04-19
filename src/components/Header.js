@@ -16,6 +16,8 @@ export default function Header({
   leftIconName,
   rightIconName1,
   rightIconName2,
+  rightIconName2Fuction,
+  drawerRequire
 }) {
   const navigation = useNavigation();
   return (
@@ -35,7 +37,7 @@ export default function Header({
           {leftIconName && (
             <TouchableOpacity
               onPress={() => {
-                leftIconName
+                !drawerRequire
                   ? navigation.goBack()
                   : navigation.dispatch(DrawerActions.openDrawer());
               }}>
@@ -66,6 +68,9 @@ export default function Header({
               color={colorTheme.secondaryColor}
               size={25}
               style={{marginRight: 15}}
+              onPress={() => {
+                rightIconName2Fuction ? rightIconName2Fuction() : {};
+              }}
             />
           )}
         </View>

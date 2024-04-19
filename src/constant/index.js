@@ -39,7 +39,7 @@ const blueText = {
     fontWeight: "600",
 }
 
-const API_URL='https://projectmanagement.cyclic.app/api'
+const API_URL='http://127.0.0.1:8000'
 const API_URL_AIML='http://127.0.0.1:8000/'
 const API_URL_Upload='http://127.0.0.1:8000'
 

@@ -15,15 +15,16 @@ import DropDownTextInput from '../../components/TextInputs/DropDownTextInput';
 import DropDownLineText from '../../components/TextInputs/DropDownLineText';
 import DateTextInput from '../../components/TextInputs/DateTextInput';
 import {CountryData, CurrencyData, FiscalYearData, PortalLanuuag} from '../../assets/data/DropDownData';
+import { userAuth } from '../../services/userauth';
 
 export default App = () => {
   const [organizationInfo, setorganizationInfo] = useState({
     inventory_name: '',
-    business_location: '',
-    fiscal_Year: '',
+    inventory_location: '',
+    fiscal_year: '',
     currency: '',
-    Language: '',
-    inventory_start_date: '',
+    language: '',
+    inventory_startdate: '',
   });
   const handleChange = (name, value) => {
     setorganizationInfo(prevState => ({
@@ -31,6 +32,15 @@ export default App = () => {
       [name]: value,
     }));
   };
+  function handleClick(params) {
+    try {
+      userAuth.AddInventory(organizationInfo).then(()=>{
+        navigation.navigate('TaxPreference');
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
@@ -57,7 +67,7 @@ export default App = () => {
             inputTitle={'Business Location'}
             data={CountryData}
             style={{marginTop: 20}}
-            textInputParams={'business_location'}
+            textInputParams={'inventory_location'}
             handleChange={handleChange}
             isRequire
           />
@@ -65,7 +75,7 @@ export default App = () => {
             inputTitle={'Fiscal Year'}
             data={FiscalYearData}
             style={{marginTop: 20}}
-            textInputParams={'fiscal_Year'}
+            textInputParams={'fiscal_year'}
             handleChange={handleChange}
             isRequire
           />
@@ -81,14 +91,14 @@ export default App = () => {
             inputTitle={'Language'}
             data={PortalLanuuag}
             style={{marginTop: 20}}
-            textInputParams={'Language'}
+            textInputParams={'language'}
             handleChange={handleChange}
             isRequire
           />
           <DateTextInput
             inputTitle={'Inventory Start Date'}
             isRequire
-            textInputParams={'inventory_start_date'}
+            textInputParams={'inventory_startdate'}
             handleChange={handleChange}
             style={{marginTop: 20}}
           />
@@ -96,7 +106,7 @@ export default App = () => {
       </View>
       <View style={styles.header}>
         <TouchableOpacity
-            onPress={()=>navigation.navigate('TaxPreference')}
+            onPress={()=>handleClick()}
           style={{
             borderRadius: 5,
             backgroundColor: colorTheme.primaryColor,

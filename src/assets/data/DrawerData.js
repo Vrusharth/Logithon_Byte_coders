@@ -6,7 +6,7 @@ import Packages from '../../screens/DrawerScreens/Packages';
 import Reports from '../../screens/DrawerScreens/Reports';
 import SalesOrder from '../../screens/DrawerScreens/SalesOrder';
 import Shipments from '../../screens/DrawerScreens/Shipments';
-import CompleteProfileCard from '../../components/CompleteProfileCard';
+import AddNewItem from '../../components/AddNewItem';
 
 export const DrawerScreens = [
   {
@@ -17,6 +17,14 @@ export const DrawerScreens = [
     HeaderName: 'DashBoard',
     rightIconName1: 'cast-audio',
     rightIconName2: 'bell-ring'
+  },
+  {
+    ScreenName: 'Items',
+    Label: 'Items',
+    IconName: 'bag-personal',
+    DrawerComponent: AddNewItem,
+    HeaderName: 'Items',
+    rightIconName2: 'check'
   },
   {
     ScreenName: 'Customers',

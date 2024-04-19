@@ -13,17 +13,18 @@ import {useNavigation} from '@react-navigation/native';
 import Header from '../../components/Header';
 import LineTextInput from '../../components/TextInputs/LineTextInput';
 import DropDownTextInput from '../../components/TextInputs/DropDownTextInput';
-import {CountryData} from '../../assets/data/DropDownData';
+import {CountryData, stateData} from '../../assets/data/DropDownData';
 import DropDownLineText from '../../components/TextInputs/DropDownLineText';
+import {userAuth} from '../../services/userauth';
 
 export default function Signup() {
   const navigation = useNavigation();
   const [registerInfo, setRegisterInfo] = useState({
-    company_name: '',
-    full_name: '',
+    companyname: '',
+    fullname: '',
     email: '',
     password: '',
-    phone: '',
+    phone_no: '',
     country: '',
     state: '',
   });
@@ -33,6 +34,16 @@ export default function Signup() {
       [name]: value,
     }));
   };
+
+  function handleClick(params) {
+    try {
+      userAuth.RegisterUser(registerInfo);
+      navigation.navigate('AddOrganisation');
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <View style={styles.container}>
       <Header
@@ -58,17 +69,17 @@ export default function Signup() {
             title={'Company Name'}
             atEndIconName={'factory'}
             style={{marginTop: 5}}
-            value={registerInfo.company_name}
+            value={registerInfo.companyname}
             handleChange={handleChange}
-            textInputParams={'company_name'}
+            textInputParams={'companyname'}
           />
           <LineTextInput
             title={'Full Name'}
             atEndIconName={'rename-box'}
             style={{marginTop: 5}}
-            value={registerInfo.full_name}
+            value={registerInfo.fullname}
             handleChange={handleChange}
-            textInputParams={'full_name'}
+            textInputParams={'fullname'}
           />
           <LineTextInput
             title={'Email Address'}
@@ -90,9 +101,9 @@ export default function Signup() {
             title={'Phone Number'}
             atEndIconName={'phone'}
             style={{marginTop: 5}}
-            value={registerInfo.phone}
+            value={registerInfo.phone_no}
             handleChange={handleChange}
-            textInputParams={'phone'}
+            textInputParams={'phone_no'}
             keyboardType={'number-pad'}
           />
           <DropDownLineText
@@ -104,13 +115,13 @@ export default function Signup() {
           />
           <DropDownLineText
             inputTitle={'State'}
-            data={CountryData}
+            data={stateData}
             style={{marginTop: 5}}
             textInputParams={'state'}
             handleChange={handleChange}
           />
           <TouchableOpacity
-          onPress={()=>navigation.navigate('AddOrganisation')}
+            onPress={() => handleClick()}
             style={{
               backgroundColor: colorTheme.primaryColor,
               paddingVertical: 20,

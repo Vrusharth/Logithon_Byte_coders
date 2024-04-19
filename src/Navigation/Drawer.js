@@ -50,7 +50,7 @@ export default function SideDrawer() {
       {DrawerScreens.map((DrawerData, index) => (
         <Drawer.Screen key={index} name={DrawerData.ScreenName} component={DrawerData.DrawerComponent} options={{
           header: (() => (
-            <Header  header={DrawerData.HeaderName} rightIconName1={DrawerData.rightIconName1}  rightIconName2={DrawerData.rightIconName2}  />
+            <Header drawerRequire leftIconName={'menu'} header={DrawerData.HeaderName} rightIconName1={DrawerData.rightIconName1}  rightIconName2={DrawerData.rightIconName2}  />
           )),
           drawerLabel: DrawerData.Label,
           drawerIcon: ({ focused, size }) => (
