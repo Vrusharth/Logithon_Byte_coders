@@ -87,4 +87,34 @@ async function GstDetails(body) {
   });
 }
 
-export const userAuth = {RegisterUser, AddInventory,GstDetails};
+async function PostAddItem(body) {
+  console.log('inside blogs');
+  const token = await AsyncStorage.getItem('userToken');
+
+  const config = {
+    headers: {
+      Authorization: token,
+    },
+  };
+
+  return new Promise((resolve, reject) => {
+    axios
+      .post(`${API_URL}/postadditem/`, body, config)
+      .then(async response => {
+        try {
+          console.log(response.data);
+          // console.log(response);
+          resolve(response);
+        } catch (e) {
+          console.log(e);
+          reject(e);
+        }
+      })
+      .catch(err => {
+        console.log(err.response.data);
+        reject(err);
+      });
+  });
+}
+
+export const userAuth = {RegisterUser, AddInventory, GstDetails, PostAddItem};

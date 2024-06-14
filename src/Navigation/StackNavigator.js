@@ -12,6 +12,7 @@ import Signup from '../screens/Auth/Signup'
 import AddOrganisation from '../screens/Auth/AddOrganisation'
 import SetupOrganization from '../screens/Auth/SetupOrganization'
 import TaxPreference from '../screens/Auth/TaxPreference'
+import AddNewItem from '../components/AddNewItem'
 
 const Stack = createNativeStackNavigator()
 
@@ -30,6 +31,7 @@ export default StackNavigation = () => {
             <Stack.Screen name='NewCustomer' component={NewCustomer} options={{ headerShown: false }} />
             <Stack.Screen name='Address' component={Address} options={{ headerShown: false }} />
             <Stack.Screen name='AddContactPerson' component={AddContactPerson} options={{ headerShown: false }} />
+            <Stack.Screen name='AddNewItem' component={AddNewItem} options={{ headerShown: false }} />
         </Stack.Navigator>
     )
 }

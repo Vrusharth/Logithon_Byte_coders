@@ -20,7 +20,7 @@ export default function Splash({navigation}) {
   return (
     <View style={styles.container}>
       <LottieView
-        source={require('../../assets/json/mental_splash.json')}
+        source={require('../../assets/json/warehouse.json')}
         autoPlay
         loop
         style={{width: 300, height: 300}}

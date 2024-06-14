@@ -7,6 +7,9 @@ import Reports from '../../screens/DrawerScreens/Reports';
 import SalesOrder from '../../screens/DrawerScreens/SalesOrder';
 import Shipments from '../../screens/DrawerScreens/Shipments';
 import AddNewItem from '../../components/AddNewItem';
+import Logout from '../../screens/DrawerScreens/Logout';
+import Items from '../../screens/DrawerScreens/Items';
+import Demandprediction from '../../components/Demandprediction';
 
 export const DrawerScreens = [
   {
@@ -22,9 +25,8 @@ export const DrawerScreens = [
     ScreenName: 'Items',
     Label: 'Items',
     IconName: 'bag-personal',
-    DrawerComponent: AddNewItem,
+    DrawerComponent: Items,
     HeaderName: 'Items',
-    rightIconName2: 'check'
   },
   {
     ScreenName: 'Customers',
@@ -34,6 +36,14 @@ export const DrawerScreens = [
     HeaderName: 'Customers',
     rightIconName1: 'cast-audio',
     rightIconName2: 'bell-ring'
+  },
+  {
+    ScreenName: 'Demandprdiction',
+    Label: 'Demandprdiction',
+    IconName: 'speedometer-slow',
+    DrawerComponent: Demandprediction,
+    HeaderName: 'Demandprdiction',
+
   },
   {
     ScreenName: 'Bills',
@@ -88,5 +98,12 @@ export const DrawerScreens = [
     HeaderName: 'Shipments',
     rightIconName1: 'cast-audio',
     rightIconName2: 'bell-ring'
+  },
+  {
+    ScreenName: 'LogOut',
+    Label: 'LogOut',
+    IconName: 'shipping-pallet',
+    DrawerComponent: Logout,
+    HeaderName: 'Log Out',
   },
 ]
